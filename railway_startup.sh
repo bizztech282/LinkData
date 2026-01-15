@@ -25,4 +25,4 @@ else:
 END
 
 echo "==> Starting Gunicorn..."
-gunicorn starlinkdirect.wsgi --timeout 120 --workers 3 --threads 2
+gunicorn starlinkdirect.wsgi --bind 0.0.0.0:${PORT:-8000} --timeout 120 --workers 3 --threads 2
