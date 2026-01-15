@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starlink Kenya - Data Bundles</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        .green-gradient {
+            background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+        }
+
+        .tab-btn {
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn.active {
+            background-color: #16a34a;
+            color: white;
+        }
+
+        .badge {
+            font-size: 10px;
+            font-weight: 700;
+            padding: 4px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .badge-hot {
+            background-color: #dc2626;
+            color: white;
+        }
+
+        .badge-value {
+            background-color: #16a34a;
+            color: white;
+        }
+
+        .badge-popular {
+            background-color: #16a34a;
+            color: white;
+        }
+
+        .buy-btn {
+            background-color: #16a34a;
+            color: white;
+            font-weight: 600;
+            padding: 8px 24px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .buy-btn:hover {
+            background-color: #15803d;
+            transform: scale(1.05);
+        }
+
+        .trust-badge {
+            background-color: #dcfce7;
+            border: 1px solid #bbf7d0;
+            border-radius: 12px;
+            padding: 8px 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #166534;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col bg-gray-50">
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <button onclick="window.history.back()" class="p-2">
+                <i data-feather="x" class="w-6 h-6 text-gray-700"></i>
+            </button>
+            {% load static %}
+            <h1 class="text-lg font-bold text-gray-900 uppercase tracking-wide">STARLINK KENYA</h1>
+            <button class="p-2">
+                <i data-feather="more-vertical" class="w-6 h-6 text-gray-700"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <div class="green-gradient text-white py-8 px-4 text-center">
+        <h2 class="text-2xl font-bold mb-2">Starlink Data Bundles</h2>
+        <p class="text-sm opacity-90">High-speed internet for Kenya</p>
+    </div>
+
+    <!-- Main Content -->
+    <main class="flex-grow container mx-auto px-4 py-6 max-w-md">
+
+        <!-- Intro Card -->
+        <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-6 mb-6 border border-green-100">
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Affordable Data Bundles</h3>
+            <p class="text-sm text-gray-600">Select from our wide range of data plans designed for high-speed
+                connectivity across Kenya.</p>
+        </div>
+
+        <!-- Category Tabs -->
+        <div class="flex gap-2 mb-6 overflow-x-auto pb-2">
+            <button
+                class="tab-btn active px-4 py-2 rounded-full bg-green-600 text-white text-sm font-semibold whitespace-nowrap"
+                onclick="filterBundles('all')">
+                All Bundles
+            </button>
+            <button
+                class="tab-btn px-4 py-2 rounded-full bg-white text-gray-700 text-sm font-semibold whitespace-nowrap border border-gray-200"
+                onclick="filterBundles('daily')">
+                Daily
+            </button>
+            <button
+                class="tab-btn px-4 py-2 rounded-full bg-white text-gray-700 text-sm font-semibold whitespace-nowrap border border-gray-200"
+                onclick="filterBundles('weekly')">
+                Weekly
+            </button>
+            <button
+                class="tab-btn px-4 py-2 rounded-full bg-white text-gray-700 text-sm font-semibold whitespace-nowrap border border-gray-200"
+                onclick="filterBundles('monthly')">
+                Monthly
+            </button>
+            <button
+                class="tab-btn px-4 py-2 rounded-full bg-white text-gray-700 text-sm font-semibold whitespace-nowrap border border-gray-200"
+                onclick="filterBundles('unlimited')">
+                Unlimited
+            </button>
+        </div>
+
+        <!-- Daily Bundles Section -->
+        <div class="bundle-section mb-8" data-category="daily">
+            <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center gap-2">
+                    <i data-feather="clock" class="w-5 h-5 text-green-600"></i>
+                    <h3 class="text-lg font-bold text-gray-900">Daily Bundles</h3>
+                </div>
+                <span class="text-xs text-gray-500">Short-term usage</span>
+            </div>
+
+            <div class="flex flex-col gap-3">
+                <!-- 2GB Daily - STARTER -->
+                <div
+                    class="bg-white rounded-xl p-4 shadow-sm card-hover border-2 border-green-500 flex items-center justify-between">
+                    <div class="flex-grow">
+                        <div class="flex items-center gap-2 mb-1">
+                            <p class="text-sm font-bold text-gray-900">24 Hours - 2GB</p>
+                            <span class="badge badge-value">BEST VALUE</span>
+                        </div>
+                        <p class="text-xs text-gray-500">Cheapest starter plan</p>
+                        <div class="mt-2 text-xl font-bold text-green-600">Ksh 99</div>
+                    </div>
+                    <button onclick="goToPayment('99', '2GB (24Hrs)')" class="buy-btn shrink-0 ml-4">
+                        BUY
+                    </button>
+                </div>
+
+                <!-- 5GB Daily - HOT -->
+                <div
+                    class="bg-white rounded-xl p-4 shadow-sm card-hover border border-gray-100 flex items-center justify-between">
+                    <div class="flex-grow">
+                        <div class="flex items-center gap-2 mb-1">
+                            <p class="text-sm font-bold text-gray-900">24 Hours - 5GB</p>
+                            <span class="badge badge-hot">HOT</span>
+                        </div>
+                        <p class="text-xs text-gray-500">Double data power</p>
+                        <div class="mt-2 text-xl font-bold text-green-600">Ksh 299</div>
+                    </div>
+                    <button onclick="goToPayment('299', '5GB (24Hrs)')" class="buy-btn shrink-0 ml-4">
+                        BUY
+                    </button>
+                </div>
+
+                <!-- 10GB Daily -->
+                <div
+                    class="bg-white rounded-xl p-4 shadow-sm card-hover border border-gray-100 flex items-center justify-between">
+                    <div class="flex-grow">
+                        <p class="text-sm font-bold text-gray-900 mb-1">24 Hours - 10GB</p>
+                        <p class="text-xs text-gray-500">Heavy daily usage</p>
+                        <div class="mt-2 text-xl font-bold text-green-600">Ksh 499</div>
+                    </div>
+                    <button onclick="goToPayment('499', '10GB (24Hrs)')" class="buy-btn shrink-0 ml-4">
+                        BUY
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Weekly Bundles Section -->
+        <div class="bundle-section mb-8" data-category="weekly">
+            <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center gap-2">
+                    <i data-feather="calendar" class="w-5 h-5 text-green-600"></i>
+                    <h3 class="text-lg font-bold text-gray-900">Weekly Bundles</h3>
+                </div>
+                <span class="text-xs text-gray-500">Weekly browsing</span>
+            </div>
+
+            <div class="flex flex-col gap-3">
+                <!-- 8.75GB Weekly - VALUE -->
+                <div
+                    class="bg-white rounded-xl p-4 shadow-sm card-hover border-2 border-green-200 flex items-center justify-between">
+                    <div class="flex-grow">
+                        <div class="flex items-center gap-2 mb-1">
+                            <p class="text-sm font-bold text-gray-900">7 Days - 8.75GB</p>
+                            <span class="badge badge-value">VALUE</span>
+                        </div>
+                        <p class="text-xs text-gray-500">Standard usage</p>
+                        <div class="mt-2 text-xl font-bold text-green-600">Ksh 499</div>
+                    </div>
+                    <button onclick="goToPayment('499', '8.75GB (Weekly)')" class="buy-btn shrink-0 ml-4">
+                        BUY
+                    </button>
+                </div>
+
+                <!-- 15GB Weekly -->
+                <div
+                    class="bg-white rounded-xl p-4 shadow-sm card-hover border border-gray-100 flex items-center justify-between">
+                    <div class="flex-grow">
+                        <p class="text-sm font-bold text-gray-900 mb-1">7 Days - 15GB</p>
+                        <p class="text-xs text-gray-500">Work & Streaming</p>
+                        <div class="mt-2 text-xl font-bold text-green-600">Ksh 850</div>
+                    </div>
+                    <button onclick="goToPayment('850', '15GB (Weekly)')" class="buy-btn shrink-0 ml-4">
+                        BUY
+                    </button>
+                </div>
+
+                <!-- 30GB Weekly - POWER -->
+                <div
+                    class="bg-white rounded-xl p-4 shadow-sm card-hover border border-gray-100 flex items-center justify-between">
+                    <div class="flex-grow">
+                        <p class="text-sm font-bold text-gray-900 mb-1">7 Days - 30GB</p>
+                        <p class="text-xs text-gray-500">Power users</p>
+                        <div class="mt-2 text-xl font-bold text-green-600">Ksh 1,499</div>
+                    </div>
+                    <button onclick="goToPayment('1499', '30GB (Weekly)')" class="buy-btn shrink-0 ml-4">
+                        BUY
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Monthly Bundles Section -->
+        <div class="bundle-section mb-8" data-category="monthly">
+            <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center gap-2">
+                    <i data-feather="calendar" class="w-5 h-5 text-green-600"></i>
+                    <h3 class="text-lg font-bold text-gray-900">Monthly Bundles</h3>
+                </div>
+                <span class="text-xs text-gray-500">Regular users</span>
+            </div>
+
+            <div class="flex flex-col gap-3">
+                <!-- 25GB Monthly -->
+                <div
+                    class="bg-white rounded-xl p-4 shadow-sm card-hover border border-gray-100 flex items-center justify-between">
+                    <div class="flex-grow">
+                        <p class="text-sm font-bold text-gray-900 mb-1">30 Days - 25GB</p>
+                        <p class="text-xs text-gray-500">Light monthly usage</p>
+                        <div class="mt-2 text-xl font-bold text-green-600">Ksh 1,500</div>
+                    </div>
+                    <button onclick="goToPayment('1500', '25GB (Monthly)')" class="buy-btn shrink-0 ml-4">
+                        BUY
+                    </button>
+                </div>
+
+                <!-- 50GB Monthly - POPULAR -->
+                <div
+                    class="bg-white rounded-xl p-4 shadow-sm card-hover border-2 border-orange-300 flex items-center justify-between">
+                    <div class="flex-grow">
+                        <div class="flex items-center gap-2 mb-1">
+                            <p class="text-sm font-bold text-gray-900">30 Days - 50GB</p>
+                            <span class="badge badge-popular">POPULAR</span>
+                        </div>
+                        <p class="text-xs text-gray-500">Best seller</p>
+                        <div class="mt-2 text-xl font-bold text-green-600">Ksh 2,500</div>
+                    </div>
+                    <button onclick="goToPayment('2500', '50GB (Monthly)')" class="buy-btn shrink-0 ml-4">
+                        BUY
+                    </button>
+                </div>
+
+                <!-- 100GB Monthly - XL -->
+                <div
+                    class="bg-white rounded-xl p-4 shadow-sm card-hover border border-gray-100 flex items-center justify-between">
+                    <div class="flex-grow">
+                        <p class="text-sm font-bold text-gray-900 mb-1">30 Days - 100GB</p>
+                        <p class="text-xs text-gray-500">High bandwidth</p>
+                        <div class="mt-2 text-xl font-bold text-green-600">Ksh 4,499</div>
+                    </div>
+                    <button onclick="goToPayment('4499', '100GB (Monthly)')" class="buy-btn shrink-0 ml-4">
+                        BUY
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Unlimited Bundles Section -->
+        <div class="bundle-section mb-8" data-category="unlimited">
+            <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center gap-2">
+                    <i data-feather="zap" class="w-5 h-5 text-green-600"></i>
+                    <h3 class="text-lg font-bold text-gray-900">Unlimited Bundles</h3>
+                </div>
+                <span class="text-xs text-gray-500">No limits</span>
+            </div>
+
+            <div class="flex flex-col gap-3">
+                <!-- Daily Unlimited -->
+                <div
+                    class="bg-white rounded-xl p-4 shadow-sm card-hover border border-gray-100 flex items-center justify-between">
+                    <div class="flex-grow">
+                        <p class="text-sm font-bold text-gray-900 mb-1">24 Hours - Unlimited</p>
+                        <p class="text-xs text-gray-500">Fastest speed</p>
+                        <div class="mt-2 text-xl font-bold text-green-600">Ksh 599</div>
+                    </div>
+                    <button onclick="goToPayment('599', 'Unlimited (24Hrs)')" class="buy-btn shrink-0 ml-4">
+                        BUY
+                    </button>
+                </div>
+
+                <!-- Monthly Unlimited -->
+                <div
+                    class="bg-white rounded-xl p-4 shadow-sm card-hover border-2 border-green-200 flex items-center justify-between">
+                    <div class="flex-grow">
+                        <div class="flex items-center gap-2 mb-1">
+                            <p class="text-sm font-bold text-gray-900">30 Days - Unlimited</p>
+                            <span class="badge badge-hot">PREMIUM</span>
+                        </div>
+                        <p class="text-xs text-gray-500">Professional</p>
+                        <div class="mt-2 text-xl font-bold text-green-600">Ksh 6,499</div>
+                    </div>
+                    <button onclick="goToPayment('6499', 'Unlimited (Monthly)')" class="buy-btn shrink-0 ml-4">
+                        BUY
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trust Indicators -->
+        <div class="bg-white rounded-2xl p-6 mb-6 shadow-sm">
+            <p class="text-center text-sm text-gray-600 mb-4 font-medium">Usalama wako ni kipaumbele chetu.</p>
+
+            <div class="grid grid-cols-2 gap-3 mb-4">
+                <div class="trust-badge">
+                    <i data-feather="lock" class="w-4 h-4"></i>
+                    <span>SSL Secured</span>
+                </div>
+                <div class="trust-badge">
+                    <i data-feather="award" class="w-4 h-4"></i>
+                    <span>Licensed Program</span>
+                </div>
+                <div class="trust-badge">
+                    <i data-feather="shield" class="w-4 h-4"></i>
+                    <span>Data Protected</span>
+                </div>
+                <div class="trust-badge">
+                    <i data-feather="check-circle" class="w-4 h-4"></i>
+                    <span>Trusted</span>
+                </div>
+            </div>
+
+            <p class="text-center text-xs text-gray-500 italic">Tuna wawezesha maelfu ya vijana wa Kenya.</p>
+        </div>
+
+        <!-- Support Section -->
+        <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-6 mb-6 border border-blue-100">
+            <div class="flex items-center gap-3 mb-3">
+                <div class="bg-blue-100 p-2 rounded-lg">
+                    <i data-feather="mail" class="w-5 h-5 text-blue-600"></i>
+                </div>
+                <div>
+                    <p class="text-sm font-semibold text-gray-900">Need Help?</p>
+                    <a href="mailto:support@starlinkkenya.co.ke" class="text-xs text-blue-600 hover:underline">
+                        support@starlinkkenya.co.ke
+                    </a>
+                </div>
+            </div>
+            <div class="flex gap-4 text-xs text-gray-600">
+                <a href="#" class="hover:text-green-600 font-medium">About Us</a>
+                <a href="#" class="hover:text-green-600 font-medium">Terms & Conditions</a>
+                <a href="#" class="hover:text-green-600 font-medium">Privacy Policy</a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 py-4">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-xs text-gray-500">© 2025 Starlink Kenya Ltd.</p>
+            <p class="text-xs text-gray-400 mt-1">Licensed by CAK | Secure M-Pesa Payments</p>
+        </div>
+    </footer>
+
+    <script>
+        feather.replace();
+
+        function goToPayment(amount, detail) {
+            const url = `/payment/?amount=${encodeURIComponent(amount)}&detail=${encodeURIComponent(detail)}`;
+            window.location.href = url;
+        }
+
+        function filterBundles(category) {
+            const sections = document.querySelectorAll('.bundle-section');
+            const tabs = document.querySelectorAll('.tab-btn');
+
+            // Update active tab
+            tabs.forEach(tab => {
+                tab.classList.remove('active', 'bg-green-600', 'text-white');
+                tab.classList.add('bg-white', 'text-gray-700', 'border', 'border-gray-200');
+            });
+            event.target.classList.add('active', 'bg-green-600', 'text-white');
+            event.target.classList.remove('bg-white', 'text-gray-700', 'border', 'border-gray-200');
+
+            // Filter sections
+            if (category === 'all') {
+                sections.forEach(section => section.style.display = 'block');
+            } else {
+                sections.forEach(section => {
+                    if (section.dataset.category === category) {
+                        section.style.display = 'block';
+                    } else {
+                        section.style.display = 'none';
+                    }
+                });
+            }
+        }
+    </script>
+</body>
+
+</html>
