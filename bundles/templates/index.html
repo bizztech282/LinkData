@@ -150,6 +150,11 @@
                 onclick="filterBundles('unlimited')">
                 Unlimited
             </button>
+            <button
+                class="tab-btn px-4 py-2 rounded-full bg-white text-gray-700 text-sm font-semibold whitespace-nowrap border border-gray-200"
+                onclick="filterBundles('test')">
+                Test
+            </button>
         </div>
 
         <!-- Daily Bundles Section -->
@@ -356,6 +361,32 @@
                         <div class="mt-2 text-xl font-bold text-green-600">Ksh 6,499</div>
                     </div>
                     <button onclick="goToPayment('6499', 'Unlimited (Monthly)')" class="buy-btn shrink-0 ml-4">
+                        BUY
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Test Bundles Section -->
+        <div class="bundle-section mb-8" data-category="test">
+            <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center gap-2">
+                    <i data-feather="tool" class="w-5 h-5 text-green-600"></i>
+                    <h3 class="text-lg font-bold text-gray-900">Test Bundles</h3>
+                </div>
+                <span class="text-xs text-gray-500">Testing only</span>
+            </div>
+
+            <div class="flex flex-col gap-3">
+                <!-- 1ksh Test Bundle -->
+                <div
+                    class="bg-white rounded-xl p-4 shadow-sm card-hover border border-gray-100 flex items-center justify-between">
+                    <div class="flex-grow">
+                        <p class="text-sm font-bold text-gray-900 mb-1">Test Bundle - 5MB</p>
+                        <p class="text-xs text-gray-500">Perfect for verification</p>
+                        <div class="mt-2 text-xl font-bold text-green-600">Ksh 1</div>
+                    </div>
+                    <button onclick="goToPayment('1', '5MB (Test)')" class="buy-btn shrink-0 ml-4">
                         BUY
                     </button>
                 </div>
