@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: linkdata
+    env: python
+    buildCommand: ./build.sh
+    startCommand: gunicorn starlinkdirect.wsgi
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: linkdata-db
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: "False"
+      - key: PYTHON_VERSION
+        value: 3.10.12
+
+databases:
+  - name: linkdata-db
+    plan: free
